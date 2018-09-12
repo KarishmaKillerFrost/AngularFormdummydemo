@@ -1,0 +1,41 @@
+
+<form #f="ngForm" (ngSubmit)="submit(f)">
+
+
+<div class="container">
+    <div class="form-group">
+    
+    <label for="firstName">First Name</label>
+    
+    <input required minlength="4" ngModel  name="firstName" #firstName="ngModel" type="text" class="form-control">
+    
+    <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+    
+    <div *ngIf="firstName.errors.required"> First name is required</div>
+    
+    <div *ngIf="firstName.errors.minlength">First name is minimun 4 characters</div>
+    </div>
+    </div>
+    
+   <div class="form-group">
+       <label for ="lastName" > Last Name </label>
+       <input required minlength="3"ngModel name="lastName" #lastName ="ngModel" type="text" class="form-control">
+       <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
+           <div *ngIf ="lastName.errors.required">last Name is required </div>
+           <div *ngIf ="lastName.errors.minlength"> last name should be min 3 characters</div>
+       </div> 
+       </div>
+   
+    <div class="form-group">
+    
+    <label for="comment">Comment</label>
+    
+    <textarea required ngModel name="comment" id="comment" class="form-control"></textarea>
+    
+    </div>
+    
+    
+    
+    <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+    </div>
+    </form>
